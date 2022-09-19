@@ -1,10 +1,11 @@
 import { CoreEntity } from '../core/core.entity';
-import { BeforeInsert, BeforeUpdate, Column, ManyToOne } from 'typeorm';
+import { BeforeInsert, BeforeUpdate, Column, Entity, ManyToOne } from 'typeorm';
 import { Exclude, instanceToPlain } from 'class-transformer';
 
 import * as bcrypt from 'bcryptjs';
 import { Role } from '../role/role.entity';
 
+@Entity()
 export class User extends CoreEntity {
   @Column({
     unique: true,

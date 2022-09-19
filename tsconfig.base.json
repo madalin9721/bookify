@@ -15,9 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bookify/api/data-access-dtos": [
-        "libs/api/data-access-dtos/src/index.ts"
-      ]
+      "@bookify/data": ["libs/data/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

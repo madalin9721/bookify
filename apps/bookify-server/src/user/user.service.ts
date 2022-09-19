@@ -17,7 +17,9 @@ export class UserService {
   private static JWT_KEY = 'JWT_SECRET';
 
   constructor(
-    @InjectRepository(User) private readonly userRepository: Repository<User>,
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+    @InjectRepository(Role)
     private readonly roleRepository: Repository<Role>,
     private readonly configService: ConfigService
   ) {}
@@ -65,10 +67,18 @@ export class UserService {
 
     const accessToken = jwt.sign(
       { email: payload.email },
-      this.configService.get(UserService.JWT_KEY),
+      this.configService.get<string>(UserService.JWT_KEY),
       { expiresIn: expiresIn }
     );
 
     return new TokenDto(accessToken, expiryDate);
+  }
+
+  async findUserOrNullByEmail(email: string): Promise<User | null> {
+    return this.userRepository.findOne({
+      where: {
+        email: email,
+      },
+    });
   }
 }
