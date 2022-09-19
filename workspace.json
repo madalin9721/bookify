@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "api-data-access-dtos": "libs/api/data-access-dtos",
     "bookify-server": "apps/bookify-server"
   }
 }
